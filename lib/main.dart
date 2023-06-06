@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:meddis/views/home_view.dart';
+import 'package:meddis/view_models/main_provider.dart';
+import 'package:meddis/views/main_view.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => MainProvider(),
+      )
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +26,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: const HomeView(),
+      home: const MainView(),
     );
   }
 }
