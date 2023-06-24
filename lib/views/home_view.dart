@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meddis/views/components/custom_search_bar.dart';
 import 'package:meddis/views/components/menu_cards.dart';
+import 'package:meddis/views/drugs/drug_view.dart';
 import 'package:meddis/views/utils/custom_text_style.dart';
 
 import 'components/header_logo.dart';
@@ -45,7 +46,9 @@ class HomeView extends StatelessWidget {
                       fontSize: 16,
                       title: "Database Obat",
                       images: "assets/images/menu_list_drugs.png",
-                      onTap: () {},
+                      onTap: () {
+                        LogicDrug(context);
+                      },
                     ),
                     MenuCards(
                       fontSize: 16,
@@ -74,6 +77,14 @@ class HomeView extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void LogicDrug(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => DrugView(),
       ),
     );
   }

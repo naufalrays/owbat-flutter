@@ -8,4 +8,10 @@ class CustomTextStyle {
     color: MyColor.blackColor,
     fontWeight: FontWeight.w700,
   );
+
+  static TextStyle headerTitleAppBar = const TextStyle(
+    fontSize: 22,
+    color: MyColor.primary,
+    fontWeight: FontWeight.w700,
+  );
 }
