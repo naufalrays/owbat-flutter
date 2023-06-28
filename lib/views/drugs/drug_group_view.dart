@@ -2,11 +2,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:meddis/view_models/drug_menu_provider.dart';
 import 'package:meddis/views/components/custom_search_bar.dart';
+import 'package:meddis/views/drugs/components/drug_category_card.dart';
+import 'package:meddis/views/utils/color.dart';
 import 'package:meddis/views/utils/custom_text_style.dart';
 import 'package:provider/provider.dart';
 
-class DrugView extends StatelessWidget {
-  DrugView({super.key});
+class DrugGroupView extends StatelessWidget {
+  DrugGroupView({super.key});
 
   final List<String> imgList = [
     'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -21,7 +23,9 @@ class DrugView extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: MyColor.backgroundColor,
       appBar: AppBar(
+        backgroundColor: MyColor.backgroundColor,
         title: Text(
           "Database Obat",
           style: CustomTextStyle.headerTitleAppBar,
@@ -56,12 +60,7 @@ class DrugView extends StatelessWidget {
                     ),
                     options: CarouselOptions(
                       height: 180,
-
-                      // enlargeStrategy: CenterPageEnlargeStrategy.zoom,
                       viewportFraction: 1.0,
-                      // enlargeFactor: 0.5,
-                      // clipBehavior: Clip.antiAliasWithSaveLayer,
-                      // aspectRatio: 2.0,
                       enlargeCenterPage: true,
                       onPageChanged: (index, reason) {
                         data.selectDestination(index);
@@ -97,50 +96,45 @@ class DrugView extends StatelessWidget {
             child: Text("Kategori Obat", style: CustomTextStyle.headerStyle),
           ),
           const SizedBox(height: 10),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisSpacing: 6,
+                mainAxisSpacing: 6,
+                crossAxisCount: 2,
+                childAspectRatio: 2,
+                children: [
+                  DrugCategoryCard(
+                    title: "Obat Bebas",
+                    assetImage:
+                        "assets/images/drug_categories/free_medicine.png",
+                    onTap: () {},
+                  ),
+                  DrugCategoryCard(
+                    title: "O. Bebas Terbatas",
+                    assetImage:
+                        "assets/images/drug_categories/limited_free_medicine.png",
+                    onTap: () {},
+                  ),
+                  DrugCategoryCard(
+                    title: "Obat Keras",
+                    assetImage:
+                        "assets/images/drug_categories/hard_medicine.png",
+                    onTap: () {},
+                  ),
+                  DrugCategoryCard(
+                    title: "Narkotika",
+                    assetImage: "assets/images/drug_categories/narkotika.png",
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
   }
-
-  // final List<Widget> imageSliders = imgList
-  //     .map((item) => Container(
-  //           child: Container(
-  //             margin: const EdgeInsets.all(5.0),
-  //             child: ClipRRect(
-  //                 borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-  //                 child: Stack(
-  //                   children: <Widget>[
-  //                     Image.network(item, fit: BoxFit.cover, width: 1000.0),
-  //                     Positioned(
-  //                       bottom: 0.0,
-  //                       left: 0.0,
-  //                       right: 0.0,
-  //                       child: Container(
-  //                         decoration: const BoxDecoration(
-  //                           gradient: LinearGradient(
-  //                             colors: [
-  //                               Color.fromARGB(200, 0, 0, 0),
-  //                               Color.fromARGB(0, 0, 0, 0)
-  //                             ],
-  //                             begin: Alignment.bottomCenter,
-  //                             end: Alignment.topCenter,
-  //                           ),
-  //                         ),
-  //                         padding: const EdgeInsets.symmetric(
-  //                             vertical: 10.0, horizontal: 20.0),
-  //                         child: Text(
-  //                           'No. ${imgList.indexOf(item)} image',
-  //                           style: const TextStyle(
-  //                             color: Colors.white,
-  //                             fontSize: 20.0,
-  //                             fontWeight: FontWeight.bold,
-  //                           ),
-  //                         ),
-  //                       ),
-  //                     ),
-  //                   ],
-  //                 )),
-  //           ),
-  //         ))
-  //     .toList();
 }

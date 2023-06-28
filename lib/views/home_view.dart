@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meddis/views/components/custom_search_bar.dart';
-import 'package:meddis/views/components/menu_cards.dart';
-import 'package:meddis/views/drugs/drug_view.dart';
+import 'package:meddis/views/components/menu_card.dart';
+import 'package:meddis/views/drugs/drug_group_view.dart';
+import 'package:meddis/views/utils/color.dart';
 import 'package:meddis/views/utils/custom_text_style.dart';
 
 import 'components/header_logo.dart';
@@ -12,7 +13,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor: MyColor.backgroundColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -41,7 +42,7 @@ class HomeView extends StatelessWidget {
                   childAspectRatio: 0.72,
                   children: <Widget>[
                     // Custom Menu Card
-                    MenuCards(
+                    MenuCard(
                       imageSize: 80,
                       fontSize: 16,
                       title: "Database Obat",
@@ -50,21 +51,24 @@ class HomeView extends StatelessWidget {
                         LogicDrug(context);
                       },
                     ),
-                    MenuCards(
+                    // Custom Menu Card 2
+                    MenuCard(
                       fontSize: 16,
                       title: "Catatan",
                       images: "assets/images/menu_notes.png",
                       isPrimaryColors: false,
                       onTap: () {},
                     ),
-                    MenuCards(
+                    // Custom Menu Card 3
+                    MenuCard(
                       fontSize: 16,
                       title: "Pengingat Obat",
                       images: "assets/images/menu_reminder.png",
                       isPrimaryColors: false,
                       onTap: () {},
                     ),
-                    MenuCards(
+                    // Custom Menu Card 4
+                    MenuCard(
                       fontSize: 16,
                       title: "Obat Berbahaya",
                       images: "assets/images/menu_dangerous_drug.png",
@@ -81,10 +85,11 @@ class HomeView extends StatelessWidget {
     );
   }
 
+  // Logic Button Drug Menu
   void LogicDrug(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => DrugView(),
+        builder: (context) => DrugGroupView(),
       ),
     );
   }

@@ -4,6 +4,7 @@ class MyColor {
   // Custom Color
   static const primary = Color(0xFF008080);
   static const primaryLight = Color(0xFF93C6C6);
+  static const backgroundColor = Color(0xFFF5F5F5);
   static const yellow = Color(0xFFFBEB23);
   static const grey = Color(0xFF636363);
   static const greenSuccess = Color(0xFF00CD15);

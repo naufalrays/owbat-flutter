@@ -14,4 +14,10 @@ class CustomTextStyle {
     color: MyColor.primary,
     fontWeight: FontWeight.w700,
   );
+
+  static TextStyle drugCategoryCardTextStyle = const TextStyle(
+    fontSize: 14,
+    color: MyColor.primary,
+    fontWeight: FontWeight.w700,
+  );
 }
