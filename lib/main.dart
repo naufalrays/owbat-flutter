@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meddis/view_models/drug_menu_provider.dart';
 import 'package:meddis/view_models/main_provider.dart';
+import 'package:meddis/view_models/scanner_provider.dart';
 import 'package:meddis/views/main_view.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +13,10 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: (context) => DrugMenuProvider(),
-      )
+      ),
+      ChangeNotifierProvider(
+        create: (context) => ScannerProvider(),
+      ),
     ],
     child: const MyApp(),
   ));

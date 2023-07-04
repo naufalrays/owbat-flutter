@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meddis/view_models/main_provider.dart';
+import 'package:meddis/view_models/scanner_provider.dart';
 import 'package:meddis/views/components/custom_button.dart';
 import 'package:meddis/views/utils/color.dart';
 import 'package:provider/provider.dart';
@@ -62,6 +63,7 @@ class MainView extends StatelessWidget {
   }
 
   void showAlertDialog(BuildContext context) {
+    final prof = Provider.of<ScannerProvider>(context, listen: false);
     showDialog(
       context: context,
       builder: (context) {
@@ -80,7 +82,7 @@ class MainView extends StatelessWidget {
                   marginBottom: 0,
                   width: size.width * 0.58,
                   height: 40,
-                  onPressed: () {},
+                  onPressed: () => prof.pickImage(isCamera: true),
                   text: "Scan with Camera",
                 ),
                 CustomButton(
@@ -89,7 +91,7 @@ class MainView extends StatelessWidget {
                   width: size.width * 0.58,
                   height: 40,
                   secondaryColor: true,
-                  onPressed: () {},
+                  onPressed: () => prof.pickImage(isCamera: false),
                   text: "Scan with Gallery",
                 ),
               ],
