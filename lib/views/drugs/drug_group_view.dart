@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:meddis/view_models/drug_menu_provider.dart';
 import 'package:meddis/views/components/custom_search_bar.dart';
 import 'package:meddis/views/drugs/components/drug_category_card.dart';
+import 'package:meddis/views/drugs/drug_list_view.dart';
 import 'package:meddis/views/utils/color.dart';
 import 'package:meddis/views/utils/custom_text_style.dart';
 import 'package:provider/provider.dart';
@@ -110,7 +111,13 @@ class DrugGroupView extends StatelessWidget {
                     title: "Obat Bebas",
                     assetImage:
                         "assets/images/drug_categories/free_medicine.png",
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => DrugListView(),
+                        ),
+                      );
+                    },
                   ),
                   DrugCategoryCard(
                     title: "O. Bebas Terbatas",

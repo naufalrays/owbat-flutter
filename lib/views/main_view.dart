@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meddis/view_models/main_provider.dart';
+import 'package:meddis/views/components/custom_button.dart';
 import 'package:meddis/views/utils/color.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,9 @@ class MainView extends StatelessWidget {
         body: data.body[data.index],
         backgroundColor: const Color(0xFFF5F5F5),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            showAlertDialog(context);
+          },
           backgroundColor: const Color(0xFFFFFFFF),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -56,5 +59,44 @@ class MainView extends StatelessWidget {
         ),
       );
     });
+  }
+
+  void showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        final size = MediaQuery.of(context).size;
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+          backgroundColor: Colors.white,
+          content: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomButton(
+                  marginTop: 5,
+                  marginBottom: 0,
+                  width: size.width * 0.58,
+                  height: 40,
+                  onPressed: () {},
+                  text: "Scan with Camera",
+                ),
+                CustomButton(
+                  marginTop: 10,
+                  marginBottom: 0,
+                  width: size.width * 0.58,
+                  height: 40,
+                  secondaryColor: true,
+                  onPressed: () {},
+                  text: "Scan with Gallery",
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
