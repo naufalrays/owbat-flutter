@@ -24,7 +24,6 @@ class DrugGroupView extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: MyColor.backgroundColor,
       appBar: AppBar(
         backgroundColor: MyColor.backgroundColor,
         title: Text(

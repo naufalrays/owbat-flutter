@@ -13,7 +13,6 @@ class MainView extends StatelessWidget {
     return Consumer<MainProvider>(builder: (context, data, _) {
       return Scaffold(
         body: data.body[data.index],
-        backgroundColor: const Color(0xFFF5F5F5),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showAlertDialog(context);

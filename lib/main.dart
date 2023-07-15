@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meddis/utils/color.dart';
 import 'package:meddis/view_models/drug_menu_provider.dart';
 import 'package:meddis/view_models/main_provider.dart';
 import 'package:meddis/view_models/scanner_provider.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: MyColor.backgroundColor,
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),

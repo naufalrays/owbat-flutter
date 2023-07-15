@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meddis/utils/custom_text_style.dart';
 
+import 'drug_view.dart';
+
 class DrugList extends ISuspensionBean {
   final String title;
   final String tag;
@@ -58,6 +60,7 @@ class _DrugListViewState extends State<DrugListView> {
   }
 
   Widget _buildListItem(DrugList item) => CupertinoContextMenu(
+        enableHapticFeedback: true,
         previewBuilder: (context, animation, child) {
           return SingleChildScrollView(
             child: Card(
@@ -100,24 +103,33 @@ class _DrugListViewState extends State<DrugListView> {
             child: const Text("Delete"),
           )
         ],
-        child: SingleChildScrollView(
-          child: SizedBox(
-            width: double.maxFinite,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
-                  child: Text(item.title),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Divider(
-                    height: 1,
+        child: GestureDetector(
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DrugView(
+                name: item.title,
+              ),
+            ),
+          ),
+          child: SingleChildScrollView(
+            child: SizedBox(
+              width: double.maxFinite,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 8),
+                    child: Text(item.title),
                   ),
-                ),
-              ],
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Divider(
+                      height: 1,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

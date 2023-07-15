@@ -9,6 +9,12 @@ class CustomTextStyle {
     fontWeight: FontWeight.w700,
   );
 
+  static TextStyle headerDrugStyle = const TextStyle(
+    fontSize: 22,
+    color: MyColor.blackColor,
+    fontWeight: FontWeight.w700,
+  );
+
   static TextStyle headerTitleAppBar = const TextStyle(
     fontSize: 22,
     color: MyColor.primary,
