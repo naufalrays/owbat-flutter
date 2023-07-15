@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meddis/views/utils/color.dart';
+import 'package:meddis/utils/color.dart';
 
 class CustomTextStyle {
   // Custom Text Style

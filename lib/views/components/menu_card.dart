@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meddis/views/components/custom_button.dart';
-import 'package:meddis/views/utils/color.dart';
+import 'package:meddis/utils/color.dart';
 
 class MenuCard extends StatelessWidget {
   const MenuCard({

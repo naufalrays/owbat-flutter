@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:meddis/views/utils/custom_text_style.dart';
+import 'package:meddis/utils/custom_text_style.dart';
 
 class DrugCategoryCard extends StatelessWidget {
   const DrugCategoryCard({

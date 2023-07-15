@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:meddis/views/components/custom_search_bar.dart';
 import 'package:meddis/views/components/menu_card.dart';
 import 'package:meddis/views/drugs/drug_group_view.dart';
-import 'package:meddis/views/utils/color.dart';
-import 'package:meddis/views/utils/custom_text_style.dart';
+import 'package:meddis/utils/color.dart';
+import 'package:meddis/utils/custom_text_style.dart';
 
 import 'components/header_logo.dart';
 

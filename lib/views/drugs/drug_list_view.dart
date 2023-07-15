@@ -2,7 +2,7 @@ import 'package:azlistview/azlistview.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meddis/views/utils/custom_text_style.dart';
+import 'package:meddis/utils/custom_text_style.dart';
 
 class DrugList extends ISuspensionBean {
   final String title;

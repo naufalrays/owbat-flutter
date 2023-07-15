@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meddis/view_models/main_provider.dart';
 import 'package:meddis/view_models/scanner_provider.dart';
 import 'package:meddis/views/components/custom_button.dart';
-import 'package:meddis/views/utils/color.dart';
+import 'package:meddis/utils/color.dart';
 import 'package:provider/provider.dart';
 
 class MainView extends StatelessWidget {
