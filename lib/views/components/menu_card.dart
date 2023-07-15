@@ -51,14 +51,15 @@ class MenuCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 10),
               child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: CustomButton(
-                    secondaryColor: isPrimaryColors,
-                    text: "Check",
-                    onPressed: onTap,
-                    height: 38,
-                    width: 80,
-                  )),
+                alignment: Alignment.bottomRight,
+                child: CustomButton(
+                  secondaryColor: isPrimaryColors,
+                  text: "Check",
+                  onPressed: onTap,
+                  height: 38,
+                  width: 92,
+                ),
+              ),
             )
           ],
         ),

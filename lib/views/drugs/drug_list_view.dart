@@ -1,6 +1,8 @@
 import 'package:azlistview/azlistview.dart';
 import 'package:faker/faker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meddis/views/utils/custom_text_style.dart';
 
 class DrugList extends ISuspensionBean {
   final String title;
@@ -55,8 +57,70 @@ class _DrugListViewState extends State<DrugListView> {
     );
   }
 
-  Widget _buildListItem(DrugList item) => ListTile(
-        title: Text(item.title),
+  Widget _buildListItem(DrugList item) => CupertinoContextMenu(
+        previewBuilder: (context, animation, child) {
+          return SingleChildScrollView(
+            child: Card(
+                // clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                  // side: const BorderSide(color: Colors.purple, width: 1),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Container(
+                  width: double.maxFinite,
+                  margin: const EdgeInsets.all(20),
+                  child: Text(
+                    "Paracetamol",
+                    style: CustomTextStyle.headerStyle,
+                  ),
+                )),
+          );
+        },
+        actions: [
+          CupertinoContextMenuAction(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            trailingIcon: CupertinoIcons.share,
+            child: const Text("Share"),
+          ),
+          CupertinoContextMenuAction(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            trailingIcon: CupertinoIcons.down_arrow,
+            child: const Text("Save To Gallery"),
+          ),
+          CupertinoContextMenuAction(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            isDestructiveAction: true,
+            trailingIcon: CupertinoIcons.delete,
+            child: const Text("Delete"),
+          )
+        ],
+        child: SingleChildScrollView(
+          child: SizedBox(
+            width: double.maxFinite,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
+                  child: Text(item.title),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Divider(
+                    height: 1,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       );
 
   List<String> generateFakeDataList(int count) {
@@ -65,7 +129,7 @@ class _DrugListViewState extends State<DrugListView> {
     int startIndex = 65; // ASCII value for 'A'
 
     for (var i = 0; i < count; i++) {
-      String fakeData = faker.person.name();
+      // String fakeData = faker.person.name();
       String fakeName =
           '${String.fromCharCode(startIndex + i)} ${faker.person.firstName()}';
       dataList.add(fakeName);
