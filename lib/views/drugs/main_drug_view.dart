@@ -8,8 +8,8 @@ import 'package:meddis/utils/color.dart';
 import 'package:meddis/utils/custom_text_style.dart';
 import 'package:provider/provider.dart';
 
-class DrugGroupView extends StatelessWidget {
-  DrugGroupView({super.key});
+class MainDrugView extends StatelessWidget {
+  MainDrugView({super.key});
 
   final List<String> imgList = [
     'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -36,7 +36,9 @@ class DrugGroupView extends StatelessWidget {
         children: [
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: CustomSearchBar(),
+            child: CustomSearchBar(
+              hintText: "Paracetamol",
+            ),
           ),
           const SizedBox(
             height: 10,

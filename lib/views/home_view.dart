@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meddis/views/components/custom_search_bar.dart';
 import 'package:meddis/views/components/menu_card.dart';
-import 'package:meddis/views/drugs/drug_group_view.dart';
+import 'package:meddis/views/drugs/main_drug_view.dart';
 import 'package:meddis/utils/custom_text_style.dart';
+import 'package:meddis/views/notes/main_note_view.dart';
 
 import 'components/header_logo.dart';
 
@@ -25,7 +26,9 @@ class HomeView extends StatelessWidget {
               Text("Cari Obat", style: CustomTextStyle.headerStyle),
               const SizedBox(height: 10),
               // Custom Search Bar
-              const CustomSearchBar(),
+              const CustomSearchBar(
+                hintText: "Paracetamol",
+              ),
               const SizedBox(height: 10),
               // Text Menu
               Text("Menu", style: CustomTextStyle.headerStyle),
@@ -45,9 +48,7 @@ class HomeView extends StatelessWidget {
                       fontSize: 16,
                       title: "Database Obat",
                       images: "assets/images/menu_list_drugs.png",
-                      onTap: () {
-                        LogicDrug(context);
-                      },
+                      onTap: () => logicDrugs(context),
                     ),
                     // Custom Menu Card 2
                     MenuCard(
@@ -55,7 +56,7 @@ class HomeView extends StatelessWidget {
                       title: "Catatan",
                       images: "assets/images/menu_notes.png",
                       isPrimaryColors: false,
-                      onTap: () {},
+                      onTap: () => logicNote(context),
                     ),
                     // Custom Menu Card 3
                     MenuCard(
@@ -83,11 +84,20 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  // Logic Button Drug Menu
-  void LogicDrug(BuildContext context) {
+  // Logic Button Drugs Menu
+  void logicDrugs(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => DrugGroupView(),
+        builder: (context) => MainDrugView(),
+      ),
+    );
+  }
+
+  // Logic Button Notes Menu
+  void logicNote(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const MainNoteView(),
       ),
     );
   }

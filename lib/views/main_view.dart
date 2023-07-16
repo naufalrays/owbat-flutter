@@ -28,15 +28,12 @@ class MainView extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
           surfaceTintColor: const Color(0xFFFFFFFF),
-          notchMargin: 9.0,
+          notchMargin: 12.0,
           shape: const CircularNotchedRectangle(),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              // const Icon(Icons.percent),
               IconButton(
-                // splashColor: Colors.transparent,
-                // highlightColor: Colors.transparent,
                 color: data.index == 0 ? MyColor.primary : MyColor.grey,
                 icon: const Icon(Icons.home),
                 iconSize: 32,
@@ -46,7 +43,6 @@ class MainView extends StatelessWidget {
                 },
               ),
               IconButton(
-                // highlightColor: Colors.transparent,
                 color: data.index == 1 ? MyColor.primary : MyColor.grey,
                 icon: const Icon(Icons.person),
                 iconSize: 32,
