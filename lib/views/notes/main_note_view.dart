@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:meddis/utils/color.dart';
 import 'package:meddis/utils/custom_text_style.dart';
+import 'package:meddis/view_models/note_provider.dart';
 import 'package:meddis/views/components/custom_search_bar.dart';
+import 'package:meddis/views/notes/components/grid_notes.dart';
 import 'package:meddis/views/notes/components/list_notes.dart';
 import 'package:meddis/views/notes/components/note_view.dart';
+import 'package:provider/provider.dart';
 
 class MainNoteView extends StatelessWidget {
   const MainNoteView({super.key});
@@ -54,25 +57,39 @@ class MainNoteView extends StatelessWidget {
                     ),
                   ),
                   Card(
-                    margin: const EdgeInsets.fromLTRB(8, 4, 4, 4),
+                    margin: const EdgeInsets.fromLTRB(8, 4, 0, 4),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     color: Colors.white,
                     surfaceTintColor: Colors.transparent,
                     elevation: 4,
-                    child: InkWell(
-                      onTap: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(12),
-                        child: Icon(
-                          Icons.list,
-                          size: 32,
+                    child: Consumer<NoteProvider>(builder: (context, data, _) {
+                      final isGridProv =
+                          Provider.of<NoteProvider>(context).isGrid;
+                      return InkWell(
+                        onTap: () =>
+                            Provider.of<NoteProvider>(context, listen: false)
+                                .changeNotesView(isGridProv),
+                        child: Padding(
+                          padding: const EdgeInsets.all(17),
+                          child: Icon(
+                            isGridProv
+                                ? Icons.view_list_rounded
+                                : Icons.grid_view_rounded,
+                            size: 22,
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    }),
                   ),
                 ],
               ),
-              const ListNotes(),
+              Consumer<NoteProvider>(builder: (context, data, _) {
+                if (data.isGrid == true) {
+                  return const GridNotes();
+                } else {
+                  return const ListNotes();
+                }
+              }),
             ],
           ),
         ),

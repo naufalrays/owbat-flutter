@@ -3,6 +3,7 @@ import 'package:meddis/views/components/custom_search_bar.dart';
 import 'package:meddis/views/components/menu_card.dart';
 import 'package:meddis/views/drugs/main_drug_view.dart';
 import 'package:meddis/utils/custom_text_style.dart';
+import 'package:meddis/views/notes/components/logic_button.dart';
 import 'package:meddis/views/notes/main_note_view.dart';
 
 import 'components/header_logo.dart';
@@ -61,10 +62,10 @@ class HomeView extends StatelessWidget {
                     // Custom Menu Card 3
                     MenuCard(
                       fontSize: 16,
-                      title: "Pengingat Obat",
+                      title: "Identifikasi Obat",
                       images: "assets/images/menu_reminder.png",
                       isPrimaryColors: false,
-                      onTap: () {},
+                      onTap: () => showAlertDialog(context),
                     ),
                     // Custom Menu Card 4
                     MenuCard(

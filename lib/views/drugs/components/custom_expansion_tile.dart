@@ -14,6 +14,7 @@ class CustomExpansionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
+      color: Colors.white,
       surfaceTintColor: Colors.transparent,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       elevation: 2,

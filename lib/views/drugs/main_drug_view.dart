@@ -24,16 +24,41 @@ class MainDrugView extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: MyColor.backgroundColor,
-        title: Text(
-          "Database Obat",
-          style: CustomTextStyle.headerTitleAppBar,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40.0),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          surfaceTintColor: MyColor.primary,
+          titleSpacing: 0,
+          leadingWidth: 40,
+          centerTitle: false,
+          backgroundColor: MyColor.backgroundColor,
+          title: Row(
+            children: [
+              IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(Icons.keyboard_arrow_left_sharp)),
+              const Text(
+                "Home",
+                style: TextStyle(fontSize: 14),
+              ),
+            ],
+          ),
         ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22.0),
+            child: Text(
+              "Database Obat",
+              style: CustomTextStyle.headerDrugStyle,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: CustomSearchBar(

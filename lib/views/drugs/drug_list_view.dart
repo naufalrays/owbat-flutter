@@ -1,6 +1,8 @@
 import 'package:azlistview/azlistview.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:meddis/utils/color.dart';
+import 'package:meddis/utils/custom_text_style.dart';
 
 import 'drug_view.dart';
 
@@ -40,52 +42,89 @@ class _DrugListViewState extends State<DrugListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Drug List View"),
-      ),
-      body: AzListView(
-        indexBarOptions: const IndexBarOptions(
-          indexHintAlignment: Alignment.centerRight,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40.0),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          surfaceTintColor: Colors.white,
+          titleSpacing: 0,
+          leadingWidth: 40,
+          centerTitle: false,
+          backgroundColor: MyColor.backgroundColor,
+          title: Row(
+            children: [
+              IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(Icons.keyboard_arrow_left_sharp)),
+              const Text(
+                "Database Obat",
+                style: TextStyle(fontSize: 14),
+              ),
+            ],
+          ),
         ),
-        data: items,
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          final item = items[index];
-          return _buildListItem(item);
-        },
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(22),
+            child: Text(
+              "List Obat Bebas",
+              style: CustomTextStyle.headerDrugStyle,
+            ),
+          ),
+          Expanded(
+            child: AzListView(
+              indexBarOptions: const IndexBarOptions(
+                indexHintAlignment: Alignment.centerRight,
+              ),
+              data: items,
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                final item = items[index];
+                return _buildListItem(item);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildListItem(DrugList item) => GestureDetector(
-        onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => DrugView(
-              name: item.title,
+  Widget _buildListItem(DrugList item) => Column(
+        children: [
+          GestureDetector(
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => DrugView(
+                  name: item.title,
+                ),
+              ),
+            ),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                width: double.maxFinite,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 8),
+                      child: Text(item.title),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Divider(
+                        height: 1,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-        child: SingleChildScrollView(
-          child: SizedBox(
-            width: double.maxFinite,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
-                  child: Text(item.title),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Divider(
-                    height: 1,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+        ],
       );
 
   List<String> generateFakeDataList(int count) {

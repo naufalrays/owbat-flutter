@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:meddis/utils/color.dart';
 import 'package:meddis/utils/custom_text_style.dart';
 import 'package:meddis/views/drugs/components/custom_expansion_tile.dart';
 
@@ -14,19 +15,34 @@ class DrugView extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).padding.top;
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40.0),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          surfaceTintColor: Colors.white,
+          titleSpacing: 0,
+          leadingWidth: 40,
+          centerTitle: false,
+          backgroundColor: MyColor.backgroundColor,
+          title: Row(
+            children: [
+              IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(Icons.keyboard_arrow_left_sharp)),
+              const Text(
+                "List Obat",
+                style: TextStyle(fontSize: 14),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 22.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: height,
-              ),
-              GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: const Icon(Icons.arrow_back_ios_new),
-              ),
               Image.asset(
                 "assets/images/paracetamol.png",
                 width: 100,
@@ -50,6 +66,7 @@ class DrugView extends StatelessWidget {
                   Expanded(
                     child: Card(
                       margin: EdgeInsets.zero,
+                      color: Colors.white,
                       surfaceTintColor: Colors.transparent,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
@@ -87,6 +104,7 @@ class DrugView extends StatelessWidget {
                   Expanded(
                     child: Card(
                       margin: EdgeInsets.zero,
+                      color: Colors.white,
                       surfaceTintColor: Colors.transparent,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
